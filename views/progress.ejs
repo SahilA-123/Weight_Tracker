@@ -1,0 +1,83 @@
+
+<%- include('partials/header') %>
+
+    <!-- the logout button -->
+    <a class="logoutButton btn btn-light btn-lg" href="/logout" role="button">Log Out</a>
+    <br><br><br><br>
+
+    <div class="stats">
+
+        <!-- the graph  -->
+        <canvas id="myChart" style="height: 580px; width:100%; max-width:1000px"></canvas>
+
+        <!-- specific details from the graph displayed on the website -->
+        <div class="details">
+            <h2 class="display-4 statistics">Statistics</h2>
+            
+            <!-- JSON.parse is important to convert the stringify thingy into array  -->
+            <div>
+                <h4 class="display-3 actual">Actual</h3>
+                <p class="data"> <%= JSON.parse(yValues)[JSON.parse(yValues).length - 1] %> kg</p>
+            </div>
+
+            <div>
+                <h4 class="display-3 thisWeek">This Week</h3>
+                <p class="data">
+                    <% if (JSON.parse(yValues).length >= 7) { %>
+                        <% if ((JSON.parse(yValues)[JSON.parse(yValues).length - 1] - JSON.parse(yValues)[JSON.parse(yValues).length - 7]).toFixed(1) > 0) { %>
+                            +<%= (JSON.parse(yValues)[JSON.parse(yValues).length - 1] - JSON.parse(yValues)[JSON.parse(yValues).length - 7]).toFixed(1) %> kg
+                        <% } else { %>
+                            <%= (JSON.parse(yValues)[JSON.parse(yValues).length - 1] - JSON.parse(yValues)[JSON.parse(yValues).length - 7]).toFixed(1) %> kg
+                        <% } %>
+                    <% } else { %>
+                        <% if ((JSON.parse(yValues)[JSON.parse(yValues).length - 1] - JSON.parse(yValues)[0]).toFixed(1) > 0) { %>
+                            +<%= (JSON.parse(yValues)[JSON.parse(yValues).length - 1] - JSON.parse(yValues)[0]).toFixed(1) %> kg
+                        <% } else { %>
+                            <%= (JSON.parse(yValues)[JSON.parse(yValues).length - 1] - JSON.parse(yValues)[0]).toFixed(1) %> kg
+                        <% } %>
+                    <% } %>
+                </p>
+            </div>
+
+            <div>
+                <h4 class="display-3 total">Total</h3>
+                <p class="data"> 
+                    <% if (totalChange.toFixed(1) > 0) { %>
+                        +<%= totalChange.toFixed(1) %> kg
+                    <% } else { %>
+                    <%= totalChange.toFixed(1) %> kg
+                    <% } %>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- javascript for chart, chart.js used  -->
+    <script>
+
+        let xValues = JSON.parse('<%- xValues %>');
+        let yValues = JSON.parse('<%- yValues %>');
+
+        new Chart("myChart", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "brown",
+            borderColor: "black",
+            data: yValues
+            }]
+        },
+        options: {
+            legend: {display: false},
+            scales: {
+            yAxes: [{ticks: {min: 40, max:100}}],
+            }
+        }
+        });
+    </script>
+
+<%- include('partials/footer') %>

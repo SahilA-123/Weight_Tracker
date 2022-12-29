@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+
+<div class="secondBox">
+    <!-- displays the name of the user based on their google data -->
+    <div class="display-3 userHeading">
+        Hello, <%= userName %> 
+    </div>
+
+    <!-- two forms -> adding data and track -->
+    <div class="row">
+        <div class="addWeightForm col col-6">
+            <form action="/track" method="post">
+                <input class = "form-control" type="date" name = "date" placeholder = "Select date" >
+                <br>
+                <input class = "form-control" type="number" name = "weight" step = "0.1" placeholder = "Enter weight">
+                <br>
+                <button class="addButton btn btn-dark btn-lg" type="submit" name = "btn" value = "firstButton">Add data</button>
+            </form> 
+            <% if (dataAdded === 1) { %>
+                <p class="confirmation">Data Added successfully</p>
+            <% } %>
+            
+        </div>
+        <div class="trackWeightForm col col-6">
+            <form action="/track" method="post">
+                <select class = "form-control" name="duration" id="">
+                    <option name = "days" value="7">7 Days</option>
+                    <option name = "days" value="14">14 Days</option>
+                    <option name = "days" value="28">28 Days</option>
+                    <option name = "days" value="60">60 Days</option>
+                    <option name = "days" value="90">90 Days</option>
+                </select>
+                <br>
+                <button class="trackButton btn btn-dark btn-lg" type="submit" name = "btn" value = "secondButton">Track!</button>
+    
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<%- include('partials/footer') %>

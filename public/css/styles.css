@@ -1,0 +1,147 @@
+
+body {
+    background-color: #E8ECEF;
+  }
+  
+  .centered {
+      padding-top: 200px;
+      text-align: center;
+  }
+  
+  .secret-text {
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+    background-color: #000;
+  }
+
+
+/* styling the gym logo which is on the front page */
+  .logo {
+    padding-bottom: 10px;
+  }
+
+  .display-3 {
+    padding-bottom: 10px;
+  }
+
+  .copyright {
+    padding-top: 100px;
+    text-align: center;
+  }
+
+  /* styling the register and login pages */
+  .box {
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    text-align: center;
+  }
+
+  .sign-up {
+    padding-top: 40px;
+    margin: auto;
+    width: 60%;
+  }
+
+  /* styling the track webpage */
+
+  .secondBox {
+    position: relative;
+    display: block;
+    margin-right: 0;
+    margin-top: 0px;
+    width: 100%;
+  }
+
+  .userHeading {
+    display: inline;
+    float: right;
+    font-size: 2rem;
+    margin-top: 22px;
+    margin-right: 2rem;
+  }
+
+  .row {
+    margin: auto;
+    margin-left: 17rem;
+  }
+
+  .addWeightForm {
+    display: inline-block;
+    margin-top: 14rem;
+  }
+
+  .trackWeightForm {
+    display: inline-block;
+    margin-top: 14rem;
+  }
+
+  .addButton, .trackButton {
+    width: 100%;
+  }
+
+  .confirmation {
+    text-align: center;
+    padding-top: 50px;
+    padding-right: 15px;
+  }
+
+  /* styling the logout button */
+  .logoutButton {
+    display: block;
+    float: right;
+    margin: 20px 30px 0 0;
+  }
+
+  /* styling the progress page */
+  #myChart {
+    display: inline-block;
+    float: left;
+  }
+
+  .details {
+    float: right;
+    display: inline-block;
+    margin-top: 30px;
+  }
+
+  .statistics {
+    margin-right: 207px;
+    margin-bottom: 60px;
+  }
+
+  .display-4 {
+    font-size: 3rem;
+  }
+
+  .actual, .thisWeek, .total {
+    font-size: 2rem;
+    text-align: center;
+    margin-right: 207px;
+  }
+
+  .data {
+    margin-right: 207px;
+    text-align: center;
+    margin-bottom: 70px;
+    color: brown;
+  }
+
+  /* making the progress page responsive  */
+  @media only screen and (max-width: 1440px) {
+    #myChart {
+        width: 1000px;
+    }
+    .details {
+        display: inline-block;
+        width: 100%;
+    }
+    .statistics, .actual, .thisWeek, .total, .data {
+        margin: 0;
+        text-align: center;
+    }
+    .statistics, .data {
+        padding-bottom: 3rem;
+    }
+  }
